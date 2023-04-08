@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
+        // This is a test comment. Let me know if you can see this on IntelliJ.
         String file = "Book_data/Book1.csv";
         System.out.println(file);
         CSVReader reader = new CSVReader();
