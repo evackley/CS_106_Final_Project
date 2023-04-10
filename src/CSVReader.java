@@ -15,7 +15,7 @@ public class CSVReader {
             String[] tempArr;
             br.readLine();
             while ((line = br.readLine()) != null) {
-                tempArr = line.split(",");
+                tempArr = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
                 eachLine.add(tempArr);
             }
 
