@@ -9,42 +9,46 @@ public class Main {
         System.out.println(library.get(0));
     }
 
+    public static Book randomBook(ArrayList<Book> library) {
+        int randomIndex = (int) (Math.random() * library.size());
+        return library.get(randomIndex);
+    }
+
     public static ArrayList<Book> loadBooks(String[] files) throws FileNotFoundException {
-        ArrayList<Book> practice = new ArrayList<>();
+        ArrayList<Book> library = new ArrayList<>();
         for (String file : files) {
             CSVReader reader = new CSVReader();
             FileReader input = new FileReader(file);
             ArrayList<String[]> myEntries = reader.read(input);
-            for (int i = 0; i < 3549; i++) {
-                String[] temp = myEntries.get(i);
-                String ISBN10 = temp[1];
-                String title = temp[2];
-                String subtitle = temp[3];
-                String[] authors = temp[4].split(";");
-                String categories = temp[5];
-                String thumbnail = temp[6];
-                String description = temp[7];
+            for (String[] tokens : myEntries) {
+                String ISBN10 = tokens[1];
+                String title = tokens[2];
+                String subtitle = tokens[3];
+                String[] authors = tokens[4].split(";");
+                String categories = tokens[5];
+                String thumbnail = tokens[6];
+                String description = tokens[7];
                 int publish_year = 0;
-                if (!temp[8].equals("")) {
-                    publish_year = Integer.parseInt(temp[8]);
+                if (!tokens[8].equals("")) {
+                    publish_year = Integer.parseInt(tokens[8]);
                 }
                 double average_rating = 0;
-                if (!temp[9].equals("")) {
-                    average_rating = Double.parseDouble(temp[9]);
+                if (!tokens[9].equals("")) {
+                    average_rating = Double.parseDouble(tokens[9]);
                 }
                 int num_pages = 0;
-                if (!temp[10].equals("")) {
-                    num_pages = Integer.parseInt(temp[10]);
+                if (!tokens[10].equals("")) {
+                    num_pages = Integer.parseInt(tokens[10]);
                 }
                 int ratings = 0;
-                if (!temp[11].equals("")) {
-                    ratings = Integer.parseInt(temp[11]);
+                if (!tokens[11].equals("")) {
+                    ratings = Integer.parseInt(tokens[11]);
                 }
                 Book myBook = new Book(ISBN10, title, subtitle, authors, categories, thumbnail, description, publish_year,
                         average_rating, num_pages, ratings);
-                practice.add(myBook);
+                library.add(myBook);
             }
         }
-        return practice;
+        return library;
     }
 }

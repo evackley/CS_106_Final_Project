@@ -82,7 +82,11 @@ public class Book {
         return title.compareTo(other.getTitle());
     }
     public String toString() {
-        String representation = title + " " + subtitle + " by " + authors[0];
+        String representation = title;
+        if (this.subtitle.compareTo("") != 0) {
+            representation += " " + subtitle;
+        }
+        representation += " by " + authors[0];
         for (int i = 1; i < authors.length; i++) {
             representation += "," + authors[i];
         }
