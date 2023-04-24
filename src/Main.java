@@ -1,3 +1,4 @@
+import java.awt.image.AreaAveragingScaleFilter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -6,12 +7,37 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         String[] files = {"Book_data/Book1.csv"};
         ArrayList<Book> library = loadBooks(files);
-        System.out.println(library.get(0));
+
+        RecommendationGraph graph = new RecommendationGraph(library);
+        String[] words = graph.findCommonWords();
+        graph.sortCommonWords();
+        words = graph.getCommonWords();
+
+        ArrayList<ArrayList<String>> importantWords = graph.getImportantWords();
+        ArrayList<String> description = importantWords.get(0);
+        for (String word : description) {
+            System.out.println(word);
+        }
+
+
     }
 
     public static Book randomBook(ArrayList<Book> library) {
         int randomIndex = (int) (Math.random() * library.size());
-        return library.get(randomIndex);
+        return library.get(884);
+    }
+
+    public static int containsFiction(ArrayList<Book> library) {
+        int count = 0;
+        for (Book book : library) {
+            if (book.getCategories().contains("fiction")) {
+                count++;
+            }
+            else if(book.getCategories().contains("Fiction")) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public static ArrayList<Book> loadBooks(String[] files) throws FileNotFoundException {

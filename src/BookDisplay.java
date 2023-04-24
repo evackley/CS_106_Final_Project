@@ -14,25 +14,22 @@ public class BookDisplay {
     private JLabel bookInformation;
     private JButton display;
 
-    public BookDisplay() {
+    public BookDisplay(Book book) {
         display.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String[] files = {"Book_data/Book1.csv"};
-                Book test = null;
-                try {
-                    test = Main.randomBook(Main.loadBooks(files));
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
-                System.out.println(test);
+
 
                 URL url = null;
                 try {
-                    url = new URL(test.getThumbnail());
+                    url = new URL(book.getThumbnail());
                 } catch (MalformedURLException ex) {
-                    throw new RuntimeException(ex);
+                    try {
+                        url = new URL("");
+                    } catch (MalformedURLException exc) {
+                        throw new RuntimeException(exc);
+                    }
                 }
                 Image image = null;
                 try {
@@ -40,8 +37,8 @@ public class BookDisplay {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-
-                bookInformation.setText(test.toString());
+                String myString = book.toString();
+                bookInformation.setText("<html>" + myString.replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>");
                 ImageIcon icon = new ImageIcon(image);
                 bookImage.setIcon(icon);
             }
@@ -50,7 +47,16 @@ public class BookDisplay {
 
     public static void main(String[] args) throws IOException {
         JFrame frame = new JFrame("BookDisplay");
-        frame.setContentPane(new BookDisplay().rootPanel);
+
+        String[] files = {"Book_data/Book1.csv"};
+        Book test = null;
+        try {
+            test = Main.randomBook(Main.loadBooks(files));
+        } catch (FileNotFoundException ex) {
+            throw new RuntimeException(ex);
+        }
+        System.out.println(test);
+        frame.setContentPane(new BookDisplay(test).rootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

@@ -11,6 +11,8 @@ public class Book {
     private int numPages;
     private int numRatings;
 
+    private boolean isRead;
+
     public Book(String ISBN10, String title, String subtitle, String[] authors, String categories,
                 String thumbnail, String description, int published, double averageRating, int numPages, int numRatings) {
         this.ISBN10 = ISBN10;
@@ -80,6 +82,14 @@ public class Book {
 
     public int compareToTitle(Book other) {
         return title.compareTo(other.getTitle());
+    }
+
+    public boolean isRead() {
+        return isRead;
+    }
+
+    public void setRead() {
+        this.isRead = true;
     }
     public String toString() {
         String representation = title;
