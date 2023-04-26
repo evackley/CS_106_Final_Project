@@ -13,12 +13,41 @@ public class Main {
         graph.sortCommonWords();
         words = graph.getCommonWords();
 
-        ArrayList<ArrayList<String>> importantWords = graph.getImportantWords();
-        ArrayList<String> description = importantWords.get(0);
-        for (String word : description) {
-            System.out.println(word);
+        double[][] hi = {{1,3,4},{1,2,3}};
+        double[][] hello = {{1,3,4},{1,2,3},{4,5,6}};
+
+
+        Matrix one = new Matrix(hi);
+        Matrix two = new Matrix(hello);
+        //System.out.println(one);
+        //System.out.println(two);
+        //System.out.println(one.getColumns());
+        //System.out.println(two.getColumns());
+
+        double[] meh = {1, 2,4};
+        double[] mehh = {4,3,4};
+
+
+        Vector a = new Vector(meh);
+        Vector b = new Vector(mehh);
+
+        Vector[] test = {a,b};
+
+        //System.out.println(a.dotProduct(b));
+        double[][] m = {{1,2},{1,2}};
+        double[][] n = {{3,4},{3,4}};
+
+        double[] y = m[0];
+        for (int i = 0; i < y.length; i++) {
+            System.out.println(y[i]);
         }
 
+        Matrix man = new Matrix(test);
+
+        //System.out.println(man);
+
+        //System.out.println(one.multiplication(two));
+        //System.out.println(one.multiplication(a));
 
     }
 
@@ -27,18 +56,6 @@ public class Main {
         return library.get(884);
     }
 
-    public static int containsFiction(ArrayList<Book> library) {
-        int count = 0;
-        for (Book book : library) {
-            if (book.getCategories().contains("fiction")) {
-                count++;
-            }
-            else if(book.getCategories().contains("Fiction")) {
-                count++;
-            }
-        }
-        return count;
-    }
 
     public static ArrayList<Book> loadBooks(String[] files) throws FileNotFoundException {
         ArrayList<Book> library = new ArrayList<>();
@@ -51,7 +68,7 @@ public class Main {
                 String title = tokens[2];
                 String subtitle = tokens[3];
                 String[] authors = tokens[4].split(";");
-                String categories = tokens[5];
+                String[] categories = tokens[5].split(";");
                 String thumbnail = tokens[6];
                 String description = tokens[7];
                 int publish_year = 0;

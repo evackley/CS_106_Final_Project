@@ -26,7 +26,7 @@ public class BookDisplay {
                     url = new URL(book.getThumbnail());
                 } catch (MalformedURLException ex) {
                     try {
-                        url = new URL("");
+                        url = new URL("https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Solid_white.svg/240px-Solid_white.svg.png");
                     } catch (MalformedURLException exc) {
                         throw new RuntimeException(exc);
                     }

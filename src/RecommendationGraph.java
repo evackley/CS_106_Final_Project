@@ -1,7 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class RecommendationGraph {
     private int[][] graph;
@@ -99,7 +98,12 @@ public class RecommendationGraph {
     }
 
     private void loadRelations() {
-
+        for (int i = 0; i < graph.length; i++) {
+            Book book1 = library.get(i);
+            for (int j = 0; j < graph.length; j++) {
+                Book book2 = library.get(j);
+            }
+        }
     }
 
 }

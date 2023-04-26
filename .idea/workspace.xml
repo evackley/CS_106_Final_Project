@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9836c5b4-c6e9-45b7-8d40-e0d0eb9a24ca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Book_data/BookTest.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Book_data/CommonWords.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Matrix.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Vector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookDisplay.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookDisplay.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BookDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RecommendationGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecommendationGraph.java" afterDir="false" />
@@ -85,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682183147880</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Reading in and display">
+      <created>1682364945339</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1682364945339</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
