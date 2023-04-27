@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9836c5b4-c6e9-45b7-8d40-e0d0eb9a24ca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Matrix.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Vector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RecommendationGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecommendationGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matrix.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,14 +87,22 @@
       <option name="project" value="LOCAL" />
       <updated>1682364945339</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Matrices">
+      <created>1682534873797</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1682534873797</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Whee" />
     <MESSAGE value="I have added some CompareTo methods, the reading in of the file works." />
     <MESSAGE value="Reading in and display" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reading in and display" />
+    <MESSAGE value="Matrices" />
+    <option name="LAST_COMMIT_MESSAGE" value="Matrices" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

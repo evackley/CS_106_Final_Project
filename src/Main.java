@@ -14,7 +14,7 @@ public class Main {
         words = graph.getCommonWords();
 
         double[][] hi = {{1,3,4},{1,2,3}};
-        double[][] hello = {{1,3,4},{1,2,3},{4,5,6}};
+        double[][] hello = {{1,3,4,5},{1,3,4,7},{4,5,6,8},{5,3,2,8}};
 
 
         Matrix one = new Matrix(hi);
@@ -37,14 +37,22 @@ public class Main {
         double[][] m = {{1,2},{1,2}};
         double[][] n = {{3,4},{3,4}};
 
-        double[] y = m[0];
-        for (int i = 0; i < y.length; i++) {
-            System.out.println(y[i]);
-        }
+
 
         Matrix man = new Matrix(test);
 
         //System.out.println(man);
+        //System.out.println(man.transpose());
+
+        double[][] eva = {{7,3},{2,1}};
+        Matrix invert = new Matrix(eva);
+        //System.out.println(invert);
+        //System.out.println(invert.inverse());
+        //System.out.println(invert);
+        System.out.println(two.inverse());
+        Matrix unInvert = new Matrix(hello);
+        System.out.println(two.inverse().multiplication(unInvert));
+
 
         //System.out.println(one.multiplication(two));
         //System.out.println(one.multiplication(a));
