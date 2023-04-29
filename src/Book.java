@@ -86,6 +86,13 @@ public class Book {
         return title.compareTo(other.getTitle());
     }
 
+    public int compareToCategories(Book other) {
+        String category1 = this.categories[0];
+        String[] otherCategories = other.getCategories();
+        String category2 = otherCategories[0];
+        return category1.compareTo(category2);
+    }
+
     public boolean isRead() {
         return isRead;
     }
