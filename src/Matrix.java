@@ -78,18 +78,22 @@ public class Matrix {
         return result;
     }
 
-    public Matrix multiplication(Vector other) throws IllegalArgumentException {
+    public Vector multiplication(Vector other) throws IllegalArgumentException {
         if (columns != other.getSize()) {
             throw new IllegalArgumentException("Dimensions must match!");
         }
         Matrix v = new Matrix(other);
         Matrix result = multiplication(v);
-        return result;
+        Vector product = new Vector(result.rows);
+        for (int i = 0; i < result.rows; i++) {
+            product.setValue(i,result.getValue(0,i));
+        }
+        return product;
     }
 
-    public void editColumn(Matrix transpose, int column, Vector entry) {
-        for (int i = 0; i < transpose.getRows(); i++) {
-            transpose.addValue(i,column,entry.getValue(i));
+    public void editColumn( int column, Vector entry) {
+        for (int i = 0; i < matrix.length; i++) {
+            matrix[i][column] = entry.getValue(i);
         }
     }
 
@@ -97,7 +101,7 @@ public class Matrix {
         Matrix transpose = new Matrix(this.columns, this.rows);
         for (int i = 0; i < this.rows; i++) {
             Vector row = new Vector(matrix[i]);
-            editColumn(transpose, i, row);
+            transpose.editColumn(i, row);
         }
         return transpose;
     }

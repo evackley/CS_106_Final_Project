@@ -11,17 +11,30 @@ public class Main {
 
         Book random = randomBook(library);
 
-        BookVector bookVector = new BookVector(library.get(785));
+        BookVector bookVector = new BookVector(random);
         ArrayList<String> words = bookVector.getImportantWords();
         System.out.println(bookVector);
-        System.out.println(library.get(785));
+        System.out.println(random);
         for (String word : words) {
             System.out.println(word);
         }
         ArrayList<String> importantWords = bookVector.getImportantWords();
+        System.out.println(random.getPersonalRating());
 
-
-
+        double[][] ab = {{1,2},{3,4}};
+        Matrix ATranspose = new Matrix(ab);
+        System.out.println(ATranspose);
+        Matrix A = ATranspose.transpose();
+        System.out.println(A);
+        Matrix ATransposeA = ATranspose.multiplication(A);
+        System.out.println(ATransposeA);
+        Matrix inverse = ATransposeA.inverse();
+        System.out.println(inverse);
+        Matrix product = inverse.multiplication(ATranspose);
+        System.out.println(product);
+        double[] test = {1,2};
+        Vector film = new Vector(test);
+        System.out.println(ATranspose.multiplication(film));
     }
 
     public static Book randomBook(ArrayList<Book> library) {

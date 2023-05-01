@@ -28,6 +28,8 @@ public class Book {
         this.averageRating = averageRating;
         this.numPages = numPages;
         this.numRatings = numRatings;
+        this.isRead = false;
+        this.personalRating = 0;
     }
 
     public String getDescription() {

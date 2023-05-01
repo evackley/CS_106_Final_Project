@@ -1,21 +1,20 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
-public class BookVector {
+public class BookVector extends Vector {
 
     private Book book;
-    private Vector vector;
     private ArrayList<String> commonWords;
     private ArrayList<String> importantWords;
     private String[] categories;
 
 
     public BookVector(Book book1) throws FileNotFoundException {
+        super(30);
         this.book = book1;
         this.commonWords = findCommonWords();
         this.importantWords = findImportantWords();
         this.categories = book.getCategories();
-        this.vector = new Vector(30);
         buildVector();
     }
 
@@ -50,23 +49,24 @@ public class BookVector {
         }
     }
 
-    public boolean containsWord(String word, ArrayList<String> words) {
-        System.out.println(word);
+    public boolean containsWord(String word, ArrayList<String> words, boolean contain) {
         word = word.toLowerCase();
         int low = 0;
         int high = words.size() - 1;
         int mid = (low + high) / 2;
         while (low <= high) {
-            if (word.compareTo(words.get(mid)) < 0) {
-                System.out.println(word + " " + words.get(mid));
+            System.out.println(word + " " + words.get(mid));
+            if (contain && words.get(mid).contains(word)) {
+                System.out.println(word);
+                return true;
+            }
+            else if (word.compareTo(words.get(mid)) < 0) {
                 high = mid - 1;
             }
             else if (word.compareTo(words.get(mid)) > 0) {
-                System.out.println(word + " " + words.get(mid));
                 low = mid + 1;
             }
             else {
-                System.out.println(word);
                 return true;
             }
             mid = (low + high) / 2;
@@ -85,7 +85,7 @@ public class BookVector {
     public ArrayList<String> removeCommonWords(String[] description) {
         ArrayList<String> leftWords = new ArrayList<>();
         for (String word : description) {
-            if(!containsWord(word, commonWords)) {
+            if(!containsWord(word, commonWords, false)) {
                 if (!leftWords.contains(word)) {
                     leftWords.add(word);
                 }
@@ -103,61 +103,86 @@ public class BookVector {
     }
 
     public void buildVector() {
-        vector.setValue(0, book.getPublished());
-        vector.setValue(1, book.getNumRatings());
-        vector.setValue(2, book.getNumPages());
-        vector.setValue(3, book.getAverageRating());
-        isTopics("christian","clergy", 4);
+        this.setValue(0, 1);
+        this.setValue(1, book.getPublished());
+        this.setValue(2, book.getNumRatings());
+        this.setValue(3, book.getNumPages());
+        this.setValue(4, book.getAverageRating());
+        isTopics("christian","clergy", 5);
         String[] christianTopics = {"christian", "clergy", "miracle", "inspiration", "faith", "preacher", "pastor", "jesus", "grace",
-                                    "redemption", "reverend", "god", "priest", "religion", "saint"};
-        hasDescription(christianTopics, 4);
-        isTopic("adventure",5);
+                                    "redemption", "reverend", "god", "priest", "religion", "saint", "theology"};
+        hasDescription(christianTopics, 5);
+        isTopic("adventure",6);
         String[] adventureTopics = {"adventure", "action", "police", "kidnap", "marine", "spy", "espionage", "secret", "treasure",
                                     "agent"};
-        hasDescription(adventureTopics, 5);
-        isTopics("romance", "love", 6);
+        hasDescription(adventureTopics, 6);
+        isTopics("romance", "love", 7);
         String[] romanceTopics = {"romance", "love", "partner", "boyfriend", "girlfriend", "wife", "marriage", "husband", "beautiful",
                                     "relationship", "passion", "happy"};
-        hasDescription(romanceTopics, 6);
-        isTopic("fantasy",7);
+        hasDescription(romanceTopics, 7);
+        isTopic("fantasy",8);
         String[] fantasyTopics = {"fantasy", "kingdom", "dwarf", "witch", "magic", "prince", "king", "queen", "princess", "spell", "evil",
                                     "quest", "journey", "myth"};
-        hasDescription(fantasyTopics, 7);
-        isTopic("drama",8);
-        String[] dramaTopics = {"moving", "emotion", "drama", "serious", "play", "impact"};
-        hasDescription(dramaTopics, 8);
+        hasDescription(fantasyTopics, 8);
         isTopic("country",9);
         String[] countryTopics = {"china", "india", "ireland", "england", "america", "country", "cowboy", "western"};
         hasDescription(countryTopics, 9);
         isTopic("science fiction", 10);
         String[] scienceFictionTopics = {"science", "scientist", "moon", "robot", "virus", "research", "mission", "clone", "space",
-                                        };
+                                        "time", "future", "alien", "teleport", "technology", "planet", "cyborg", "solar system", "nebula"};
+        hasDescription(scienceFictionTopics, 10);
         isTopic("essay",11);
+        String[] essayTopics = {"essay", "short", "critique", "thought", "idea"};
+        hasDescription(essayTopics, 11);
         isTopics("juvenile","children", 12);
         String[] childrenTopics = {"child", "kid", "boy", "girl", "son", "daughter", "school"};
         hasDescription(childrenTopics, 12);
         isTopic("war",13);
+        String[] warTopics = {"war", "battle", "army", "soldier", "prisoner", "revolution", "militia", "bomb"};
+        hasDescription(warTopics, 13);
         isTopic("christmas",14);
+        String[] christmasTopics = {"santa", "cookie", "christmas", "present", "gift", "reindeer"};
+        hasDescription(christmasTopics, 14);
         isTopic("fictitious character", 15);
         isTopic("history",16);
+        String[] historyTopics = {"history", "classic", "year"};
+        hasDescription(historyTopics, 16);
         isTopic("biography",17);
         isTopic("fairy tale", 18);
+        String[] fairyTaleTopics = {"fairy", "magic", "faerie"};
+        hasDescription(fairyTaleTopics, 18);
         isTopic("nonfiction",19);
+        String[] nonfictionTopics = {"true", "nonfiction", "political", "science", "math", "numbers", "history"};
+        hasDescription(nonfictionTopics, 19);
         isTopic("philosophy",20);
+        String[] philosophyTopics = {"philosophy", "philosopher"};
+        hasDescription(philosophyTopics, 20);
         isTopic("travel",21);
+        String[] travelTopics = {"travel", "voyage", "journey", "exploration"};
         isTopic("fiction",22);
+        String[] fictionTopics = {"novel", "fiction"};
+        hasDescription(fictionTopics, 22);
         isTopics("mystery", "detective",23);
+        String[] mysteryTopics = {"mystery", "detective", "clue", "investigation"};
+        hasDescription(mysteryTopics, 23);
         isTopic("language",24);
         isTopic("art", 25);
+        String[] artTopics = {"art", "paint", "draw", "music", "sing", "instrument", "canvas"};
+        hasDescription(artTopics, 25);
         isTopic("horror", 26);
+        String[] horrorTopics = {"ghost", "scary", "scare", "horror", "creepy"};
+        hasDescription(horrorTopics, 26);
         String[] award = {"prize", "award", "laureate", "bestselling"};
         hasDescription(award, 27);
+        isTopic("drama",28);
+        String[] dramaTopics = {"moving", "emotion", "drama", "serious", "play", "impact"};
+        hasDescription(dramaTopics, 28);
     }
 
     public void isTopics(String one, String two, int index) {
         for (String category : categories) {
             if (category.toLowerCase().contains(one) || category.toLowerCase().contains(two)) {
-                vector.setValue(index, 1);
+                this.setValue(index, 1);
             }
         }
     }
@@ -166,25 +191,25 @@ public class BookVector {
     public void isTopic(String topic, int index) {
         for (String category : categories) {
             if (category.toLowerCase().contains(topic)) {
-                vector.setValue(index, 1);
+                this.setValue(index, 1);
             }
         }
     }
 
     public void hasDescription(String[] genre, int index) {
-        double count = vector.getValue(index);
+        double count = this.getValue(index);
         for (String word : genre) {
-            if (containsWord(word, importantWords)) {
+            if (containsWord(word, importantWords, true)) {
                 count++;
             }
         }
-        vector.setValue(index, count);
+        this.setValue(index, count);
     }
 
     public String toString() {
         String representation = "";
-        for (int i = 0; i < vector.getSize(); i++) {
-            representation += vector.getValue(i) + "\n";
+        for (int i = 0; i < this.getSize(); i++) {
+            representation += this.getValue(i) + "\n";
         }
         return representation;
     }
