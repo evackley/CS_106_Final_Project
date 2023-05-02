@@ -50,11 +50,8 @@ public class BookDisplay {
 
         String[] files = {"Book_data/Book1.csv"};
         Book test = null;
-        try {
-            test = Main.randomBook(Main.loadBooks(files));
-        } catch (FileNotFoundException ex) {
-            throw new RuntimeException(ex);
-        }
+        Library library = new Library(files); //We need some way to make sure that we aren't wiping history everytime this is called
+        test = Main.randomBook(library);
         System.out.println(test);
         frame.setContentPane(new BookDisplay(test).rootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,6 +1,12 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+
+/**
+ * @author Eva Ackley
+ * This class creates a vector based on characteristics of the book, in order to use least-squares
+ * for recommendation
+ */
 public class BookVector extends Vector {
 
     private Book book;
@@ -9,6 +15,11 @@ public class BookVector extends Vector {
     private String[] categories;
 
 
+    /**
+     * A
+     * @param book1
+     * @throws FileNotFoundException
+     */
     public BookVector(Book book1) throws FileNotFoundException {
         super(30);
         this.book = book1;
@@ -24,8 +35,7 @@ public class BookVector extends Vector {
         FileReader input = new FileReader(file);
         ArrayList<String[]> myEntries = reader.read(input);
         ArrayList<String> words = new ArrayList<>();
-        for (int i = 0; i < myEntries.size(); i++) {
-            String[] tokens = myEntries.get(i);
+        for (String[] tokens : myEntries) {
             words.add(tokens[0].toLowerCase());
         }
         sortWords(words);
@@ -159,6 +169,7 @@ public class BookVector extends Vector {
         hasDescription(philosophyTopics, 20);
         isTopic("travel",21);
         String[] travelTopics = {"travel", "voyage", "journey", "exploration"};
+        hasDescription(travelTopics, 21);
         isTopic("fiction",22);
         String[] fictionTopics = {"novel", "fiction"};
         hasDescription(fictionTopics, 22);
