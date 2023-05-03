@@ -8,27 +8,22 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         String[] files = {"Book_data/Book1.csv"};
         Library library = new Library(files);
+        ArrayList<Book> bookLibrary = library.getLibrary();
+        Stack<Book> readHistory = new Stack<>();
+        Book one = bookLibrary.get(1453);
+        one.setRead();
+        one.setPersonalRating(2);
+        readHistory.push(one);
+        Book two = bookLibrary.get(967);
+        two.setRead();
+        two.setPersonalRating(5);
+        readHistory.push(two);
+        Book three = bookLibrary.get(89);
+        three.setPersonalRating(3);
+        readHistory.push(three);
 
-        Book random = randomBook(library);
-
-        BookVector bookVector = new BookVector(random);
-        ArrayList<String> words = bookVector.getImportantWords();
-        System.out.println(bookVector);
-        System.out.println(random);
-        for (String word : words) {
-            System.out.println(word);
-        }
-        ArrayList<String> importantWords = bookVector.getImportantWords();
-        System.out.println(random.getPersonalRating());
-
-        double[][] ab = {{0,2},{3,4}};
-        Matrix A = new Matrix(ab);
-        System.out.println(A);
-        Matrix Ainverse = A.inverse();
-        System.out.println(Ainverse);
-
-
-
+        RecommendationHeap recommendationHeap = new RecommendationHeap(bookLibrary, readHistory);
+        System.out.println(recommendationHeap.removeMax());
     }
 
     public static Book randomBook(Library library) {

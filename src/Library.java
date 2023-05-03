@@ -2,9 +2,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+/**
+ * @author Eva Ackley
+ */
 public class Library {
     ArrayList<Book> library;
-    int size;
 
     public Library(String[] files) throws FileNotFoundException {
         library = new ArrayList<>();
@@ -49,5 +51,9 @@ public class Library {
 
     public Book getBook(int index) {
         return library.get(index);
+    }
+
+    public ArrayList<Book> getLibrary() {
+        return this.library;
     }
 }
