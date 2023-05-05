@@ -27,7 +27,7 @@ public class ViewHistory {
     public String getHistory() {
         StringBuilder sb = new StringBuilder();
         for (int i = historyStack.size() - 1; i >= 0; i--) {
-            String bookTitle = historyStack.peek(i);
+            String bookTitle = historyStack.peek();
             sb.append(bookTitle).append("\n");
         }
         return sb.toString();
@@ -56,7 +56,7 @@ public class ViewHistory {
         try {
             FileWriter fw = new FileWriter(filename);
             for (int i = historyStack.size() - 1; i >= 0; i--) {
-                String bookTitle = historyStack.peek(i);
+                String bookTitle = historyStack.peek();
                 fw.write(bookTitle + "\n");
             }
             fw.close();

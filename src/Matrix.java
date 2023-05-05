@@ -153,7 +153,7 @@ public class Matrix {
         Matrix result = multiplication(v); //Uses matrix multiplication method
         Vector product = new Vector(result.rows); //Return the product to a vector
         for (int i = 0; i < result.rows; i++) {
-            product.setValue(i,result.getValue(0,i));
+            product.setValue(i,result.getValue(i,0));
         }
         return product;
     }

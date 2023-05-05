@@ -43,4 +43,13 @@ public class BookNode implements Comparable<BookNode>{
         }
         return Double.compare(potentialRating, other.getRating());
     }
+
+    /**
+     * A toString method for the BookNode class
+     * @return The title of the book stored in the book node
+     */
+    public String toString() {
+        return book.getTitle();
+    }
+
 }

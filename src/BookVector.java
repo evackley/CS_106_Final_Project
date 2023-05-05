@@ -21,7 +21,7 @@ public class BookVector extends Vector {
      * @throws FileNotFoundException If the common words file is not found, an exception is thrown
      */
     public BookVector(Book book1) throws FileNotFoundException {
-        super(23);
+        super(22);
         this.book = book1;
         this.commonWords = findCommonWords(); //Loads common words
         this.importantWords = findImportantWords(); //Finds important words (excluding common words) in the book description
@@ -153,25 +153,25 @@ public class BookVector extends Vector {
      */
     private void buildVector() {
         this.setValue(0, 1); //This is a constant
-        this.setValue(1, book.getPublished());
-        this.setValue(2, book.getNumRatings());
-        this.setValue(3, book.getNumPages());
-        this.setValue(4, book.getAverageRating());
+        this.setValue(1, (book.getPublished() * 0.0001)); //These are adjusted to be small values
+        this.setValue(2, (book.getNumRatings() * 0.00001));
+        this.setValue(3, (book.getNumPages() * 0.001));
+        this.setValue(4, (book.getAverageRating() * 0.1));
         isTopics("christian","clergy", 5);
         String[] christianTopics = {"christian", "clergy", "miracle", "inspiration", "faith", "preacher", "pastor", "jesus", "grace",
                                     "redemption", "reverend", "god", "priest", "religion", "saint", "theology"};
         hasDescription(christianTopics, 5);
         isTopic("adventure",6);
         String[] adventureTopics = {"adventure", "action", "police", "kidnap", "marine", "spy", "espionage", "secret", "treasure",
-                                    "agent"};
+                                    "agent", "mafia", "enemy"};
         hasDescription(adventureTopics, 6);
         isTopics("romance", "love", 7);
         String[] romanceTopics = {"romance", "love", "partner", "boyfriend", "girlfriend", "wife", "marriage", "husband", "beautiful",
-                                    "relationship", "passion", "happy"};
+                                    "relationship", "passion", "happy", "feeling"};
         hasDescription(romanceTopics, 7);
         isTopic("fantasy",8);
         String[] fantasyTopics = {"fantasy", "kingdom", "dwarf", "witch", "magic", "prince", "king", "queen", "princess", "spell", "evil",
-                                    "quest", "journey", "myth"};
+                                    "quest", "journey", "myth", "trilogy"};
         hasDescription(fantasyTopics, 8);
         isTopic("science fiction", 9);
         String[] scienceFictionTopics = {"science", "scientist", "moon", "robot", "virus", "research", "mission", "clone", "space",
@@ -194,23 +194,24 @@ public class BookVector extends Vector {
         String[] nonfictionTopics = {"true", "nonfiction", "political", "science", "math", "numbers", "history",
                                     "philosophy"};
         hasDescription(nonfictionTopics, 15);
-        isTopic("fiction",17);
+        isTopic("fiction",16);
         String[] fictionTopics = {"novel", "fiction", "literature"};
-        hasDescription(fictionTopics, 17);
-        isTopics("mystery", "detective",18);
-        String[] mysteryTopics = {"mystery", "detect", "clue", "investigation", "criminal"};
-        hasDescription(mysteryTopics, 18);
-        isTopic("art", 19);
-        String[] artTopics = {"art", "paint", "draw", "music", "sing", "instrument", "canvas"};
-        hasDescription(artTopics, 19);
-        isTopic("horror", 20);
+        hasDescription(fictionTopics, 16);
+        isTopics("mystery", "detective",17);
+        String[] mysteryTopics = {"mystery", "detect", "clue", "investigation", "criminal", "crime", "attorney"};
+        hasDescription(mysteryTopics, 17);
+        isTopic("art", 18);
+        String[] artTopics = {"art", "paint", "draw", "music", "sing", "instrument", "canvas", "costume"};
+        hasDescription(artTopics, 18);
+        isTopic("horror", 19);
         String[] horrorTopics = {"ghost", "scary", "scare", "horror", "creepy"};
-        hasDescription(horrorTopics, 20);
-        String[] award = {"prize", "award", "laureate", "bestselling"};
-        hasDescription(award, 21);
-        isTopic("drama",22);
+        hasDescription(horrorTopics, 19);
+        this.setValue(20, book.getAverageRating() * 0.01 + Math.random() * 0.01);
+        String[] award = {"prize", "award", "laureate", "bestselling", "acclaim"};
+        hasDescription(award, 20);
+        isTopic("drama",21);
         String[] dramaTopics = {"moving", "emotion", "drama", "serious", "play", "impact"};
-        hasDescription(dramaTopics, 22);
+        hasDescription(dramaTopics, 21);
     }
 
     /**
@@ -223,9 +224,13 @@ public class BookVector extends Vector {
         for (String category : categories) {
             if (category.toLowerCase().contains(one) || category.toLowerCase().contains(two)) {
                 //If the category of the book contains one of these words, the vector will be updated to reflect that
-                this.setValue(index, 1);
+                this.setValue(index, book.getAverageRating() * 0.1 + 0.5); //The value will be greater than 0.5 if the book has this topic
+                return;
             }
         }
+        //Set the value low, and slightly randomized in order to allow the matrix to invertible if this topic is not found
+        this.setValue(index, book.getAverageRating() * 0.01 + Math.random() * 0.01);
+
     }
 
 
@@ -237,9 +242,13 @@ public class BookVector extends Vector {
     private void isTopic(String topic, int index) {
         for (String category : categories) {
             if (category.toLowerCase().contains(topic)) {
-                this.setValue(index, 1);
+                //Value is greater than 0.5 at that index of the array
+                this.setValue(index, book.getAverageRating() * 0.1 + 0.5);
+                return;
             }
         }
+        //Value is small and random
+        this.setValue(index, book.getAverageRating() * 0.01 + Math.random() * 0.01);
     }
 
     /**
@@ -252,8 +261,13 @@ public class BookVector extends Vector {
         for (String word : genre) {
             if (containsWord(word, importantWords, true)) {
                 //Checks if this word is present in the description of the book
-                count++;
+                //Increases the value of the vector at that index slightly
+                count = count + book.getAverageRating() * 0.05;
             }
+        }
+        if (count > 1) {
+            //The maximum value is 1
+            count = 1;
         }
         this.setValue(index, count); //Increases value of the vector at this index
     }
@@ -263,9 +277,12 @@ public class BookVector extends Vector {
      * @return A String representation of a Book Vector
      */
     public String toString() {
+        String[] topics = {"Constant", "Year Published", "Ratings", "Pages", "Average Rating", "Christian", "Adventure", "Romance", "Fantasy",
+                "Science Fiction", "Essay", "Juvenile", "War", "History", "Biography", "Nonfiction", "Fiction", "Mystery", "Art", "Horror",
+                "Award", "Drama"};
         String representation = "";
         for (int i = 0; i < this.getSize(); i++) {
-            representation += this.getValue(i) + "\n";
+            representation += topics[i] + this.getValue(i) + "\n";
         }
         return representation;
     }

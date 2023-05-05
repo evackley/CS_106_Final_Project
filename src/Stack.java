@@ -26,7 +26,7 @@ public class Stack<T> {
         return data;
     }
 
-    public T peek(int i) {
+    public T peek() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }

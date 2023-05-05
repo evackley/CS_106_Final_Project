@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9836c5b4-c6e9-45b7-8d40-e0d0eb9a24ca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ViewHistory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book_data/Book1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Book_data/Book1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Book_data/BookTest.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Book_data/BookTest.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BookNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BookVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookVector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Library.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matrix.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RecommendationHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecommendationHeap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Stack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViewHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewHistory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683068273809</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Working on Recommendation Heap">
+      <created>1683138684816</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683138684816</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -145,16 +155,10 @@
           <properties class="java.lang.NumberFormatException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/RecommendationHeap.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="22" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
