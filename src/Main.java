@@ -21,7 +21,8 @@ public class Main {
         RecommendationHeap<BookNode> recommendationHeap = new RecommendationHeap<>(bookLibrary, readHistory);
         for (int i = 0; i < 5; i++) {
             BookNode max = (BookNode) recommendationHeap.removeMax();
-            System.out.println(max.toString() + max.getRating());
+            Book book = max.getBook();
+            System.out.println(max.toString());
         }
 
     }
