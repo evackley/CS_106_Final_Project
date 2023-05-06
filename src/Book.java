@@ -150,10 +150,15 @@ public class Book {
         String[] otherAuthors = other.getAuthors();
         String otherAuthorFull = otherAuthors[0].toLowerCase(); //Use lower case to make comparisons work better
         String[] firstAuthorNames = firstAuthorFull.split(" ");
-        String firstAuthor = firstAuthorNames[firstAuthorNames.length - 1]; //Get the last name of the first author
+        String firstAuthorLast = firstAuthorNames[firstAuthorNames.length - 1]; //Get the last name of the first author
         String[] otherAuthorNames = otherAuthorFull.split(" ");
-        String otherAuthor = otherAuthorNames[otherAuthorNames.length - 1]; //Get the last name of the other author
-        return firstAuthor.compareTo(otherAuthor);
+        String otherAuthorLast = otherAuthorNames[otherAuthorNames.length - 1]; //Get the last name of the other author
+        if (firstAuthorLast.compareTo(otherAuthorLast) == 0) {
+            String firstAuthorFirst = firstAuthorNames[0];
+            String otherAuthorFirst = otherAuthorNames[0];
+            return firstAuthorFirst.compareTo(otherAuthorFirst);
+        }
+        return firstAuthorLast.compareTo(otherAuthorLast);
     }
 
     /**

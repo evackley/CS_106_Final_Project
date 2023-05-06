@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9836c5b4-c6e9-45b7-8d40-e0d0eb9a24ca" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683333249294</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Updated compareTo methods">
+      <created>1683406982744</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1683406982744</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -154,7 +159,8 @@
     <MESSAGE value="Working on Recommendation Vectors" />
     <MESSAGE value="Working on Recommendation Heap" />
     <MESSAGE value="I think the Inverting is working now" />
-    <option name="LAST_COMMIT_MESSAGE" value="I think the Inverting is working now" />
+    <MESSAGE value="Updated compareTo methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated compareTo methods" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
