@@ -116,7 +116,7 @@ public class ViewHistory {
     void clearBookHistory() {
         try {
             FileWriter writer = new FileWriter(filename);
-            writer.write("Book Title");
+            writer.write("Book Title,Rating\n");
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
