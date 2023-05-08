@@ -25,9 +25,9 @@ public class RecommendationHeap<T> extends ArrayHeap {
      * @throws FileNotFoundException The method creates BookVectors, which have the potential to throw FileNotFoundExceptions
      * @throws IllegalArgumentException Creates matrices, which have the potential to throw IllegalArgumentExceptions
      */
-    public RecommendationHeap(ArrayList<Book> library, Stack<Book> readHistory) throws FileNotFoundException, IllegalArgumentException {
+    public RecommendationHeap(Library library, Stack<Book> readHistory) throws FileNotFoundException, IllegalArgumentException {
         super(); //Creates a heap
-        this.library = library;
+        this.library = library.getLibrary();
         ArrayList<Book> readBooks = getHistory(readHistory); //Adds books from the stack history to an ArrayList
         calculatePotentialRatings(readBooks); //Find the potential rating vector
         loadValues(); //Adds each BookNode with its potential rating to the ArrayHeap
