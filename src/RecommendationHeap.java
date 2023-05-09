@@ -72,6 +72,7 @@ public class RecommendationHeap<T> extends ArrayHeap {
                 readBooks.add(book);
             }
         }
+        size = readBooks.size();
         Vector ratings = new Vector(size); //Create a Vector to hold the user's ratings of the book
         //This matrix will technically be the transpose of the matrix that is designated A,
         //because of the way that I conceptualize vectors
